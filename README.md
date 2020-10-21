@@ -29,3 +29,10 @@ existing OBS Studio shortcut on the Desktop (p.ex.):
 The `--startrecording` instructs OBS Studio to start recording as soon
 as it starts. You can place those shortcuts on the Desktop, or inside
 a folder. You are not going to use them directly.
+
+### Setting up the browser
+
+Make sure that the browser that will be used by the batch script is
+setup to open / join the meeting directly, without requiring user
+input. The browser should open the relevant clients / join the meeting
+when given a URL as an argument from the command line.
