@@ -36,3 +36,15 @@ Make sure that the browser that will be used by the batch script is
 setup to open / join the meeting directly, without requiring user
 input. The browser should open the relevant clients / join the meeting
 when given a URL as an argument from the command line.
+
+### Batch script
+
+The batch script is responsible for starting the browser (in order to
+start / join the meeting) and start OBS Studio from the previously
+created shortcuts. The script is in `Zrec.bat`. It takes two arguments
+and can be run from the command line or from a shortcut (on the
+Desktop p.ex.); the first one is the path of the OBS Studio (profile
+specific) shortcut from above and the second one is the URL of the
+meeting. The arguments are space-separated. If any of the paths or
+names contains spaces or special characters they will need to placed
+inside quotes (`"`).
