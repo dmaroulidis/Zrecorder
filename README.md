@@ -48,3 +48,5 @@ specific) shortcut from above and the second one is the URL of the
 meeting. The arguments are space-separated. If any of the paths or
 names contains spaces or special characters they will need to placed
 inside quotes (`"`).
+
+## Second way
