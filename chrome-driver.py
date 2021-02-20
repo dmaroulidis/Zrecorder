@@ -34,7 +34,7 @@ el.click()
 try:
     wait.until(EC.url_contains('idp.tuc.gr/'))
     institutional_login(driver)
-except TimeoutException as e:
+except TimeoutException:
     pass
 
 # Join Zoom call
