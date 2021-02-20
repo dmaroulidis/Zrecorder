@@ -48,7 +48,7 @@ def get_ffmpeg_command(ffmpeg_params, sink):
             '-g', str(ffmpeg_params.gop_size), '-tune', 'zerolatency',
             '-f', sink.format, sink.path]
 
-def get_ffmpeg_command_lossless():
+def get_ffmpeg_command_lossless(ffmpeg_params, sink):
     return ['ffmpeg', '-y', '-v', 'info', '-f', 'x11grab', '-draw_mouse', '0',
             '-r', str(ffmpeg_params.framerate),
             '-s', str(ffmpeg_params.resolution),
