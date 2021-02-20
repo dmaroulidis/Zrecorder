@@ -42,6 +42,15 @@ driver.find_element_by_id('joinBtn').click()
 # Select computer audio
 #driver.find_element_by_css_selector('.join-audio-by-voip > button').click()
 
+try:
+    flag = False
+    while not flag:
+        meeting_not_started = wait.until(lambda d: d.find_element_by_css_selector('#prompt > h4'))
+        if meeting_not_started.text != 'The meeting has not started':
+            flag = True
+except TimeoutException:
+    pass
+
 join_audio_btn = wait.until(lambda d: d.find_element_by_css_selector('.join-audio-by-voip > button'))
 join_audio_btn.click()
 #driver.find_element_by_tag_name('body').send_keys(Keys.TAB + Keys.ENTER)
