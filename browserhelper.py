@@ -10,6 +10,32 @@ from time import sleep
 from os import environ
 from subprocess import TimeoutExpired
 
+def get_browser():
+    """
+    Initializes a new Chrome instance with specific options and returns
+    a Selenium webdriver object.
+    """
+    options = webdriver.ChromeOptions()
+
+    prefs = {'hardware.audio_capture_enabled': True,
+    'hardware.video_capture_enabled': True,
+    'hardware.audio_capture_allowed_urls': ['https://tuc-gr.zoom.us'],
+    'hardware.video_capture_allowed_urls': ['https://tuc-gr.zoom.us'],
+    'URL_allow_list': ['zoommtg://'],
+    'protocol_handler.allowed_origin_protocol_pairs': \
+             {'https://tuc-gr.zoom.us': {'zoommtg': True}}}
+    # Add prefs to Chrome's profile preferences
+    options.add_experimental_option('prefs',prefs)
+    options.add_argument("start-maximized")
+    options.add_argument("kiosk")
+    options.add_argument("enabled")
+    options.add_argument("disable-infobars")
+    options.add_argument("autoplay-policy=no-user-gesture-required")
+
+    driver = webdriver.Chrome(options=options)
+    return driver
+
+
 def quit_meeting(driver, wait):
     '''Quit Zoom meeting'''
     leave_button = driver.find_element_by_css_selector('.footer__leave-btn-container > button')
