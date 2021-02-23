@@ -34,6 +34,8 @@ parser.add_argument('-p', '--password', action='store',
                     help='password to use when loging in to Zoom')
 parser.add_argument('-n', '--course-name', action='store',
                     help='name of course to be recorded')
-parser.add_argument('-o', '-output-dir', action='store', type=Path,
+parser.add_argument('-o', '--output-dir', action='store', type=Path,
                     help='directory to store recordings')
+parser.add_argument('-f', '--command-only', action='store_false',
+                    help='print ffmpeg command instead of recording meeting')
 args = parser.parse_args()
