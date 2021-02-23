@@ -36,6 +36,44 @@ def get_browser():
     return driver
 
 
+def join_meeting(driver, wait, meeting_url, username, password):
+    """
+    Join Zoom meeting and login to Zoom if necessary. After getting into
+    the meeting connect computer audio and mute the microphone if necessary.
+    """
+    driver.get(meeting_url)
+    sleep(5)
+    el = wait.until(
+        lambda d: d.find_element_by_link_text('Join from Your Browser'))
+    el.click()
+
+    try:
+        wait.until(EC.url_contains('idp.tuc.gr/'))
+        institutional_login(driver, username, password)
+    except TimeoutException:
+        pass
+
+    # Click Join button to join meeting
+    el = wait.until(lambda d: d.find_element_by_id('joinBtn'))
+    el.click()
+
+    flag = False
+    while not flag:
+        try:
+            title = wait.until(
+                EC.title_contains('The meeting has not started - Zoom'))
+            sleep(3)
+        except TimeoutException:
+            flag = True
+
+    join_audio_btn = wait.until(lambda d:
+        d.find_element_by_css_selector('.join-audio-by-voip > button'))
+    wait.until(EC.element_to_be_clickable(join_audio_btn))
+    join_audio_btn.click()
+
+    mute_mic(driver)
+
+
 def quit_meeting(driver, wait):
     '''Quit Zoom meeting'''
     leave_button = driver.find_element_by_css_selector('.footer__leave-btn-container > button')
