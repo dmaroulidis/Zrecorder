@@ -5,6 +5,7 @@
 
 from subprocess import Popen, PIPE, STDOUT, SubprocessError
 from dataclasses import dataclass
+from datetime import datetime
 
 
 @dataclass
@@ -79,3 +80,15 @@ def record(ffmpeg_command):
     except (SubprocessError, OSError) as e:
         print('ERROR: ffmpeg command failed')
         return 'ERROR: ffmpeg command failed'
+
+
+def get_recording_filename(course_name, output_dir):
+    """
+    Return a Sink() object complete with the recording's path for the
+    current lecture.
+    """
+    now = datetime.now()
+    extension = now.strftime('%d-%m-%Y_%H-%M-%S.mkv')
+    name = course_name.replace(' ', '_')  + '_' + extension
+    path = output_dir / name
+    return Sink(path=str(path.resolve()))
