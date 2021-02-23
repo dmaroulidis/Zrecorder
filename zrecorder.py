@@ -17,7 +17,9 @@ def main(meeting_url, course_name, username, password, output_dir):
     meeting and recording it.
     """
 
-    pass
+    default_wait_time = 10
+    driver = get_browser()
+
 
 # Argument parser
 parser = argparse.ArgumentParser(
