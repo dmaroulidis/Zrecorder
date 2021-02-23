@@ -88,15 +88,16 @@ def launch_meeting(driver):
     '''Launch meeting in Chrome'''
     pass
 
-def institutional_login(driver):
+def institutional_login(driver, username, password):
     '''Login to Zoom using instititutional credentials'''
-    uni_username = environ['UNI_USERNAME']
-    uni_password = environ['UNI_PASSWORD']
-    driver.find_element_by_id('username').send_keys(uni_username + Keys.TAB)
-    driver.find_element_by_id('password').send_keys(uni_password + Keys.ENTER)
+    username_field = driver.find_element_by_id('username')
+    username_field.send_keys(username + Keys.TAB)
+    password_field = driver.find_element_by_id('password')
+    password_field.send_keys(password + Keys.ENTER)
+
     try:
         driver.find_element_by_name('_eventId_proceed').click()
-    except NoSuchElementException as e:
+    except NoSuchElementException:
         pass
 
 def mute_mic(driver):
