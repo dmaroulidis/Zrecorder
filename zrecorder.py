@@ -18,8 +18,8 @@ def main(meeting_url, course_name, username, password, output_dir, command_only)
     """
 
     default_wait_time = 10
-    wait = WebDriverWait(driver, default_wait_time)
     driver = get_browser()
+    wait = WebDriverWait(driver, default_wait_time)
     join_meeting(driver, wait, meeting_url, username, password)
 
     # Start ffmpeg recording
