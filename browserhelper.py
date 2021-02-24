@@ -121,6 +121,7 @@ def wait_for_meeting_over(driver, wait, ffmpeg_proc):
                 try:
                     cmdout = ffmpeg_proc.communicate(input='q', timeout=10)
                     print('Meeting ended. Stopping ffmpeg recording.')
+                    print(cmdout)
                 except TimeoutExpired as e:
                     ffmpeg_proc.kill()
                     print('[WARN] ffmpeg process killed' + e)
