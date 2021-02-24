@@ -68,7 +68,7 @@ def join_meeting(driver, wait, meeting_url, username, password):
 
     join_audio_btn = wait.until(lambda d:
         d.find_element_by_css_selector('.join-audio-by-voip > button'))
-    wait.until(EC.element_to_be_clickable(join_audio_btn))
+    #wait.until(EC.element_to_be_clickable(join_audio_btn))
     join_audio_btn.click()
 
     mute_mic(driver)
