@@ -76,6 +76,7 @@ def record(ffmpeg_command):
     try:
         ffmpeg_proc = Popen(ffmpeg_command, stdin=PIPE, stdout=PIPE,
                             stderr=STDOUT, text=True, shell=True)
+        print('record(): Started ffmpeg process')
         return ffmpeg_proc
     except (SubprocessError, OSError) as e:
         print('ERROR: ffmpeg command failed')
