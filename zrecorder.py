@@ -28,7 +28,7 @@ def main(meeting_url, course_name, username, password, output_dir, command_only)
     sink = get_recording_filename(course_name, output_dir)
     ffmpeg_command = get_ffmpeg_command_lossless(ffmpeg_params, sink)
     if command_only:
-        ffmpeg_proc = record(ffmpeg_command)
+        ffmpeg_proc = record(' '.join(ffmpeg_command))
         wait_for_meeting_over(driver, wait, ffmpeg_proc)
     else:
         print(' '.join(ffmpeg_command))
