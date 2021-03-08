@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.action_chains import ActionChains
 from time import sleep
 from os import environ
 from subprocess import TimeoutExpired
@@ -83,7 +84,7 @@ def join_meeting(driver, wait, meeting_url, username, password):
     collapse_menu = wait.until(lambda d:
         d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide'))
     minimize_panel_btn = wait.until(lambda d:
-        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div >  div > button:nth-child(1)'))
+        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div > button:nth-child(1)'))
 
     ActionChains(driver).move_to_element(collapse_menu).click(minimize_panel_btn).perform()
 
