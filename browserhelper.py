@@ -79,6 +79,9 @@ def join_meeting(driver, wait, meeting_url, username, password):
         d.find_element_by_css_selector(
             '#wc-container-left > div.full-screen-icon > div > ul > li:nth-child(3) > a'))
     fullscreen_btn.click()
+    minimize_panel_btn = wait.until(lambda d:
+        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide > button:nth-child(1)'))
+    minimize_panel_btn.click()
 
     mute_mic(driver)
 
