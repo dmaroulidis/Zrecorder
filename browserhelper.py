@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.action_chains import ActionChains
 from time import sleep
 from os import environ
 from subprocess import TimeoutExpired
@@ -79,9 +80,12 @@ def join_meeting(driver, wait, meeting_url, username, password):
         d.find_element_by_css_selector(
             '#wc-container-left > div.full-screen-icon > div > ul > li:nth-child(3) > a'))
     fullscreen_btn.click()
+    collapse_menu = wait.until(lambda d:
+        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide'))
     minimize_panel_btn = wait.until(lambda d:
-        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide > button:nth-child(1)'))
-    minimize_panel_btn.click()
+        d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div >  div > button:nth-child(1)'))
+
+    ActionChains(driver).move_to_element(collapse_menu).click(minimize_panel_btn).perform()
 
     mute_mic(driver)
 
