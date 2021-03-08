@@ -71,6 +71,15 @@ def join_meeting(driver, wait, meeting_url, username, password):
     #wait.until(EC.element_to_be_clickable(join_audio_btn))
     join_audio_btn.click()
 
+    view_btn = wait.until(lambda d:
+        d.find_element_by_css_selector(
+            '#wc-container-left > div.full-screen-icon > div > button'))
+    view_btn.click()
+    fullscreen_btn = wait.until(lambda d:
+        d.find_element_by_css_selector(
+            '#wc-container-left > div.full-screen-icon > div > ul > li:nth-child(3) > a'))
+    fullscreen_btn.click()
+
     mute_mic(driver)
 
 
