@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.action_chains import ActionChains
 from time import sleep
 from os import environ
 from subprocess import TimeoutExpired
