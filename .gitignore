@@ -130,3 +130,6 @@ dmypy.json
 
 # Ignore Chrome profile dir
 chrome_profile/
+
+# Ignore .ini files
+.ini
