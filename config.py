@@ -16,7 +16,10 @@ def get_course_info(cfg, course_name):
     """
     Return course name, and meeting_url.
     """
-    output_dir = Path(cfg[course_name]['outputdir'])
+    if cfg.getboolean('DEFAULT', 'UseDefaultOutputDir', fallback=False):
+        output_dir = cfg['DEFAULT']['outputdir']
+    else:
+        output_dir = cfg[course_name]['outputdir']
     return (course_name,
             cfg[course_name]['meetingurl'],
             output_dir)

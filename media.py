@@ -89,6 +89,7 @@ def get_recording_filename(course_name, output_dir):
     Return a Sink() object complete with the recording's path for the
     current lecture.
     """
+    output_dir = Path(output_dir)
     now = datetime.now()
     extension = now.strftime('%d-%m-%Y_%H-%M-%S.mkv')
     name = course_name.replace(' ', '_')  + '_' + extension

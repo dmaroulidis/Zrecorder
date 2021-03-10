@@ -63,7 +63,7 @@ if args.config_file:
     args.course_name, args.meeting_url, args.output_dir = get_course_info(cfg, print_menu(cfg))
     args.username = cfg['DEFAULT']['username']
     args.password = cfg['DEFAULT']['password']
-    args.output_dir = cfg['DEFAULT']['outputdir']
+#    args.output_dir = cfg['DEFAULT']['outputdir']
     print(args)
 
 main(args.meeting_url, args.course_name, args.username, args.password,
