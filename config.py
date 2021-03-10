@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import configparser
 import cli_ui
+from pathlib import Path
 
 def load_config(config_file):
     """
@@ -15,9 +16,10 @@ def get_course_info(cfg, course_name):
     """
     Return course name, and meeting_url.
     """
+    output_dir = Path(cfg[course_name]['outputdir'])
     return (course_name,
             cfg[course_name]['meetingurl'],
-            cfg[course_name]['outputdir'])
+            output_dir)
 
 def print_menu(cfg):
     """
