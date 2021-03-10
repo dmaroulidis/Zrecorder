@@ -71,27 +71,28 @@ def join_meeting(driver, wait, meeting_url, username, password):
         d.find_element_by_css_selector('.join-audio-by-voip > button'))
     #wait.until(EC.element_to_be_clickable(join_audio_btn))
     join_audio_btn.click()
-
-    view_btn = wait.until(lambda d:
-        d.find_element_by_css_selector(
-            '#wc-container-left > div.full-screen-icon > div > button'))
-    view_btn.click()
-    fullscreen_btn = wait.until(lambda d:
-        d.find_element_by_css_selector(
-            '#wc-container-left > div.full-screen-icon > div > ul > li:nth-child(3) > a'))
-    fullscreen_btn.click()
     try:
-        collapse_menu = wait.until(lambda d:
-            d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide'))
-        minimize_panel_btn = wait.until(lambda d:
-            d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div > button:nth-child(1)'))
+        view_btn = wait.until(lambda d:
+            d.find_element_by_css_selector(
+                '#wc-container-left > div.full-screen-icon > div > button'))
+        view_btn.click()
+        fullscreen_btn = wait.until(lambda d:
+            d.find_element_by_css_selector(
+                '#wc-container-left > div.full-screen-icon > div > ul > li:nth-child(3) > a'))
+        fullscreen_btn.click()
+        try:
+            collapse_menu = wait.until(lambda d:
+                d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div.suspension-window-container__tabs.suspension-window-container__tabs--hide'))
+            minimize_panel_btn = wait.until(lambda d:
+                d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div > button:nth-child(1)'))
 
-        ActionChains(driver).move_to_element(collapse_menu).click(minimize_panel_btn).perform()
-    except TimeoutException:
-        minimize_panel_btn = wait.until(lambda d:
-            d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div > button:nth-child(1)'))
+            ActionChains(driver).move_to_element(collapse_menu).click(minimize_panel_btn).perform()
+        except TimeoutException:
+            minimize_panel_btn = wait.until(lambda d:
+                d.find_element_by_css_selector('body > div:nth-child(15) > div > div > div > div > button:nth-child(1)'))
         minimize_panel_btn.click()
-
+    except TimeoutException:
+        pass
     mute_mic(driver)
 
 
