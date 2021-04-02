@@ -66,11 +66,14 @@ def join_meeting(driver, wait, meeting_url, username, password):
             sleep(3)
         except TimeoutException:
             flag = True
-
-    join_audio_btn = wait.until(lambda d:
-        d.find_element_by_css_selector('.join-audio-by-voip > button'))
-    #wait.until(EC.element_to_be_clickable(join_audio_btn))
-    join_audio_btn.click()
+    # TODO fix join audio button
+    try:
+        join_audio_btn = wait.until(lambda d:
+            d.find_element_by_css_selector('.join-audio-by-voip > button'))
+        #wait.until(EC.element_to_be_clickable(join_audio_btn))
+        join_audio_btn.click()
+    except TimeoutException:
+        pass
     try:
         view_btn = wait.until(lambda d:
             d.find_element_by_css_selector(
