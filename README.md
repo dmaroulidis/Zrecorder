@@ -10,3 +10,4 @@ ongoing meeting's video and audio output with ffmpeg.
 - [x] Run ffmpeg to record meetings
 - [ ] Implement course schedule
 - [x] Join meetings automatically on Google Chrome
+New line
